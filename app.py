@@ -160,20 +160,26 @@ def predict_person(file_path):
     if winner == 0 and winner2==3 :
         plotFeature(0,log_likelihood[0])
         return "welcome amira Door is now opened"    
-    elif winner ==1:
+    elif winner ==1 and winner2==3:
         plotFeature(1,log_likelihood[1])
         return "welcome ezzat  Door is now opened"
-    elif winner ==2: 
+    elif winner ==2 and winner2==3: 
         plotFeature(2,log_likelihood[2])  
         return "welcome mariam  Door is now opened"       
-    elif winner ==3:
+    elif winner ==3 and winner2==3:
         plotFeature(3,log_likelihood[3]) 
         return "welcome osama  Door is now opened" 
-    elif winner2 !=3:
-        return "Sorry You are not an owner  " 
+    elif winner==0 and winner2 !=3:
+        return "Amira Please say open the door  " 
+    elif winner==1 and winner2 !=3:
+        return "ezzat irPlease say open the door  " 
+    elif winner==2 and winner2 !=3:
+        return "mariam Please say open the door  " 
+    elif winner==3 and winner2 !=3:
+        return "osama Please say open the door  " 
     else:
-        return "Owner didn't say open the door"
-
+        return "sorry you are not an owner"
+ 
 
 
 
@@ -199,22 +205,17 @@ def predict_scentence(file_path):
         scores = np.array(gmm.score(x))
         log_likelihood[j] = scores.sum()
 
-    winner = np.argmax(log_likelihood)
-    print(log_likelihood)
+    # winner = np.argmax(log_likelihood)
+    # flag = False
+    # flagLst = log_likelihood - max(log_likelihood)
+    # for i in range(len(flagLst)):
+    #     if flagLst[i] == 0:
+    #         continue
+    #     if abs(flagLst[i]) < 0.7:
+    #         flag = True
 
-    flag = False
-    flagLst = log_likelihood - max(log_likelihood)
-    for i in range(len(flagLst)):
-        if flagLst[i] == 0:
-            continue
-        if abs(flagLst[i]) < 0.7:
-            flag = True
-
-    if flag:
-        winner = 5
-
-    # print(winner)
-
+    # if flag:
+    #     winner = 5
     # if winner ==3:
     #     return "Correct Password"
     # else :
