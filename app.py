@@ -170,9 +170,9 @@ def predict_person(file_path):
         plotFeature(3,log_likelihood[3]) 
         return "welcome osama  Door is now opened" 
     elif winner2 !=3:
-        return "You can't open door " 
+        return "Sorry You are not an owner  " 
     else:
-        return "You didn't say open the door"
+        return "Owner didn't say open the door"
 
 
 
